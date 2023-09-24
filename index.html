@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Web Paint</title>
+
+    <link href="./styles.css" type="text/css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="field">
+      <canvas id="canvas"></canvas>
+
+      <div class="tools">
+        <button type="button" class="button" onclick="paint.undoLast()">Undo</button>
+        <button type="button" class="button" onclick="paint.clearCanvas()">
+          Clear
+        </button>
+        <button type="button" class="button" onclick="paint.downloadImage()">
+          Save
+        </button>
+
+        <div
+          onclick="paint.changeColor(this)"
+          class="color-field colorButton"
+          style="background: red"
+        ></div>
+        <div
+          onclick="paint.changeColor(this)"
+          class="color-field colorButton"
+          style="background: blue"
+        ></div>
+        <div
+          onclick="paint.changeColor(this)"
+          class="color-field colorButton"
+          style="background: green"
+        ></div>
+        <div
+          onclick="paint.changeColor(this)"
+          class="color-field colorButton"
+          style="background: yellow"
+        ></div>
+
+        <input
+          type="color"
+          class="color-picker"
+          oninput="paint.drawColor = this.value"
+        />
+        <input
+          type="range"
+          class="pen-range"
+          min="1"
+          max="100"
+          oninput="paint.drawWidth = this.value"
+          value="1"
+        />
+
+        <button type="button" class="button drawTypeButton" style="color:black; background-color: white; " onclick="paint.changeDrawingType(this)">
+          Pędzel
+        </button>
+        <button type="button" class="button drawTypeButton" onclick="paint.changeDrawingType(this)">
+          Prostokąt
+        </button>
+        <button type="button" class="button drawTypeButton" onclick="paint.changeDrawingType(this)">
+          Elipsa
+        </button>
+        <button type="button" class="button drawTypeButton" onclick="paint.changeDrawingType(this)">
+          Linia
+        </button>
+
+        <input class="checkbox" type="checkbox" onclick="paint.proporcja=this.checked"> <p> Zachowaj proporcje</p>
+        <input class="checkbox" type="checkbox" onclick="paint.fill=this.checked"><p> Wypełnienie </p>
+      </div>
+    </div>
+  </body>
+
+  <script src="./main.js"></script>
+</html>
